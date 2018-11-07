@@ -1,0 +1,17 @@
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\CustomListClass_Tests.dll
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\CustomListClass_Tests.pdb
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\obj\Debug\CustomListClass_Tests.csprojAssemblyReference.cache
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\obj\Debug\CustomListClass_Tests.csproj.CoreCompileInputs.cache
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\obj\Debug\CustomListClass_Tests.csproj.CopyComplete
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\obj\Debug\CustomListClass_Tests.dll
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\obj\Debug\CustomListClass_Tests.pdb
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\CustomListClass.exe
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\CustomListClass.pdb
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass_Tests\bin\Debug\CustomListClass.exe.config

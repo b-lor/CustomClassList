@@ -1,0 +1,7 @@
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\obj\Debug\CustomListClass.csprojAssemblyReference.cache
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\obj\Debug\CustomListClass.csproj.CoreCompileInputs.cache
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\bin\Debug\CustomListClass.exe.config
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\bin\Debug\CustomListClass.exe
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\bin\Debug\CustomListClass.pdb
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\obj\Debug\CustomListClass.exe
+C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\obj\Debug\CustomListClass.pdb
