@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 // custom built list to store any data type 
-// read only count property
+// read only count property-
 // c# indexer accessible via index, cannot access an out of bounds index
 // add object to an instance of list class
 // override tostring method to convert list to string
@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 // overload the - operator to subtract 2 instances 
 // write details of operator overload - check userstories
 // zip 2 columns together (zipper)
-
 
 namespace CustomListClass
 {
@@ -51,13 +50,29 @@ namespace CustomListClass
             capacity++;
         }
 
+        //public bool Remove(T toRemove)
+        //{
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        if (items[i].Equals(toRemove))
+        //        {
+        //            items[i] = items[i + 1];
+        //            i++;
+        //        }
+        //    }
+        //    count--;
+        //    capacity--;
+        //    return true;
+        //}
+
         public bool Remove(T toRemove)
         {
+            int index = IndexOf(toRemove);
+
             for (int i = 0; i < count; i++)
             {
                 if (items[i].Equals(toRemove))
                 {
-                    items[i] = items[i + 1];
                     i++;
                 }
             }
@@ -65,7 +80,24 @@ namespace CustomListClass
             capacity--;
             return true;
         }
+        public int IndexOf(T item)
+        {
+            return Array.IndexOf<T>(items, item, 0, count);
+        }
 
+        public void RemoveAt(int index)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (items[i].Equals(index))
+                {
+                    i++;
+                }
+            }
+            Array.Copy(items, index + 1, items, index, count - (index + 1));
+            count--;
+            capacity--;
+        }
 
         public int increaseList(int capacity)
         {
@@ -79,5 +111,6 @@ namespace CustomListClass
             items = newArray;
             return capacity;
         }
+
     }
 }
