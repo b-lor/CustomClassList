@@ -111,6 +111,16 @@ namespace CustomListClass
             items = newArray;
             return capacity;
         }
+        public override string ToString()
+        {
+            string isString = "";
+            isString = items[0].ToString();
+            for (int i = 1; i < count; i++)
+            {
+                isString = items[i].ToString();
+            }
+            return isString;
+        }
 
     }
 }

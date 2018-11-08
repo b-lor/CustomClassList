@@ -219,5 +219,22 @@ namespace CustomListClass_Tests
             //Assert.AreEqual(count, list.Count);
         }
 
+        [TestMethod]
+        public void Adding_Int_To_List_And_Return_As_String()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            string expected = "17";
+
+            //Act
+            list.Add(17);
+
+            string result = list.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, result);
+        }
+
+
     }
 }
