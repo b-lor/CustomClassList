@@ -21,10 +21,10 @@ namespace CustomListClass
         T[] items = new T[1];
 
         public int Count { get { return count; } }
-        public int Capacity { get { return capacity; } }
+        public int Capacity { get { return capacity; } set { capacity = value; } }
 
         private int count;
-        private int capacity;
+        private int capacity { get; set; }
 
         public T this[int i]
         {
@@ -34,83 +34,54 @@ namespace CustomListClass
 
         public CustomList()
         {
-            capacity = 0;
-            items = new T[capacity];
+            items = new T[0];
             count = 0;
+        }
+
+        public void increaseList()
+        {
+            if (count >= capacity)
+            {
+                    capacity++;
+            }
+            capacity = count;
         }
 
         public void Add(T toAdd)
         {
-                if (count >= capacity)
-                {
-                increaseList(capacity);
-            }
-            items[count] = toAdd;
+            T[] tempArray = new T[items.Length + 1];
             count++;
-            capacity++;
+            increaseList();
+            for (int i = 0; i < items.Length; i++)
+            {
+                tempArray[i] = items[i];
+            }
+            tempArray[tempArray.Length - 1] = toAdd;
+            items = tempArray;
         }
 
-        //public bool Remove(T toRemove)
-        //{
-        //    for (int i = 0; i < count; i++)
-        //    {
-        //        if (items[i].Equals(toRemove))
-        //        {
-        //            items[i] = items[i + 1];
-        //            i++;
-        //        }
-        //    }
-        //    count--;
-        //    capacity--;
-        //    return true;
-        //}
 
         public bool Remove(T toRemove)
         {
-            int index = IndexOf(toRemove);
-
+            bool result = false;
             for (int i = 0; i < count; i++)
             {
                 if (items[i].Equals(toRemove))
                 {
-                    i++;
+                    int removeIndex = i;
+                    for (int j = removeIndex; j < count - 1; j++)
+                    {
+                        items[j] = items[j + 1];
+                    }
+                    count--;
+                    capacity--;
+                    result = true;
                 }
             }
-            count--;
-            capacity--;
-            return true;
-        }
-        public int IndexOf(T item)
-        {
-            return Array.IndexOf<T>(items, item, 0, count);
+            return result;
         }
 
-        public void RemoveAt(int index)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                if (items[i].Equals(index))
-                {
-                    i++;
-                }
-            }
-            Array.Copy(items, index + 1, items, index, count - (index + 1));
-            count--;
-            capacity--;
-        }
 
-        public int increaseList(int capacity)
-        {
-            capacity = count + 1;
-            T[] newArray = new T[capacity];
-
-            for (int i = 0; i < items.Length; i++)
-            {
-                newArray[i] = items[i];
-            }
-            items = newArray;
-            return capacity;
-        }
         public override string ToString()
         {
             string isString = "";
