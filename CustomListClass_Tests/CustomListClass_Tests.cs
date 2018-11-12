@@ -13,7 +13,7 @@ namespace CustomListClass_Tests
     public class CustomListClass_Tests
     {
         [TestMethod]
-        public void Check_If_Count_Equals_To_5()
+        public void Check_If_Count_Equals_To_9()
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
@@ -33,19 +33,6 @@ namespace CustomListClass_Tests
         }
 
         [TestMethod]
-        public void Check_If_Index_1_Is_Equal_To_17()
-        {
-            //Arrange
-            CustomList<int> list = new CustomList<int>();
-            int expected = 17;
-            //Act
-            list.Add(16);
-            list.Add(17);
-            list.Add(18);
-
-            Assert.AreEqual(expected, list[1]);
-        }
-        [TestMethod]
         public void Check_If_Index_2_Is_Equal_To_18()
         {
             //Arrange
@@ -60,41 +47,6 @@ namespace CustomListClass_Tests
 
             Assert.AreEqual(expected, list[2]);
         }
-
-        [TestMethod]
-        public void Check_If_Capacity_Equals_To_7()
-        {
-            //Arrange
-            CustomList<int> list = new CustomList<int>();
-            int expected = 7;
-            //Act
-            list.Add(16);
-            list.Add(17);
-            list.Add(18);
-            list.Add(16);
-            list.Add(19);
-            list.Add(16);
-            list.Add(19);
-
-            Assert.AreEqual(expected, list.Capacity);
-        }
-
-        [TestMethod]
-        public void Check_If_Removed_Index_Changes_to_Next_Index()
-        {
-            //Arrange
-            CustomList<int> list = new CustomList<int>();
-            int expected = 16;
-            //Act
-            list.Add(17);
-            list.Add(18);
-            list.Add(16);
-            list.Add(19);
-            list.Remove(17);
-
-            Assert.AreEqual(expected, list[1]);
-        }
-
 
         [TestMethod]
         public void Check_If_Removing_2_Indexes_Removes_It_from_The_List_And_New_Index_Is_changed()
@@ -117,22 +69,6 @@ namespace CustomListClass_Tests
         }
 
         [TestMethod]
-        public void Check_If_Capacity_Changes_From_4_To_3_After_Removing_1_Item()
-        {
-            //Arrange
-            CustomList<int> list = new CustomList<int>();
-            int capacity = 3;
-            //Act
-            list.Add(17);
-            list.Add(18);
-            list.Add(16);
-            list.Add(19);
-            list.Remove(18);
-
-            Assert.AreEqual(capacity, list.Capacity);
-        }
-
-        [TestMethod]
         public void Check_If_Count_Changes_After_Removing_Value()
         {
             //Arrange
@@ -149,7 +85,7 @@ namespace CustomListClass_Tests
         }
 
         [TestMethod]
-        public void Check_If_Index_Sequence_is_Correct_After_Removing_2_Same_Values()
+        public void Check_If_Index_Is_Correct_After_Removing_Value()
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
@@ -157,7 +93,7 @@ namespace CustomListClass_Tests
 
             //Act
             list.Add(17);
-            list.Add(18);
+            list.Add(12);
             list.Add(16);
             list.Add(18);
             list.Add(10);
@@ -166,55 +102,24 @@ namespace CustomListClass_Tests
             list.Add(10);
             list.Remove(18);
 
-            Assert.AreEqual(expected, list[2]);
+            Assert.AreEqual(expected, list[3]);
         }
 
         [TestMethod]
-        public void Adding_Int_To_List_And_Return_As_String()
+        public void Check_Capacity_Of_List()
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            string expected = "19";
-
-            //Act
-            list.Add(19);
-
-            string result = list.ToString();
-
-            //Assert
-            Assert.AreEqual(expected, "19");
-        }
-
-        [TestMethod]
-        public void Check_If_Removing_1_Index_Changes_Capacity_From_5_to_4()
-        {
-            //Arrange
-            CustomList<int> list = new CustomList<int>();
-            int capacity = 4;
+            int capacity = 8;
             //Act
             list.Add(17);
             list.Add(18);
             list.Add(16);
             list.Add(19);
             list.Add(18);
-            list.Remove(17);
-
-            Assert.AreEqual(capacity, list.Capacity);
-        }
-
-        [TestMethod]
-        public void Check_If_Removing_1_Index_Changes_Count_From_7_to_6aaa()
-        {
-            //Arrange
-            CustomList<int> list = new CustomList<int>();
-            int capacity = 4;
-            //Act
-            list.Add(17);
             list.Add(18);
-            list.Add(16);
-            list.Add(19);
             list.Add(18);
-            list.Remove(list[3]);
+            list.Add(18);
 
             Assert.AreEqual(capacity, list.Capacity);
         }
@@ -235,5 +140,61 @@ namespace CustomListClass_Tests
 
             Assert.AreEqual(expected, list[1]);
         }
+        [TestMethod]
+        public void Checking_If_index_1_Int_Is_Returned_As_String()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            string expected = "16";
+
+            //Act
+            list.Add(15);
+            list.Add(16);
+            list.Add(17);
+            list.Add(18);
+
+            string result = list[1].ToString();
+
+            //Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Checking_If_2_Strings_Are_Added_With_Plus_Operator()
+        {
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
+            CustomList<string> list1 = new CustomList<string>();
+            string expected = "HelloKitty";
+
+            //Act
+            list.Add("Hello");
+            list1.Add("Kitty");
+
+            string result = list[0] + list1[0];
+
+            //Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Checking_If_2_Int_Are_Added_With_Plus_Operator()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>();
+            int expected = 5;
+
+            //Act
+            list.Add(2);
+            list1.Add(3);
+
+            int result = list[0] + list1[0];
+
+            //Assert
+            Assert.AreEqual(expected, result);
+        }
+
+
     }
 }

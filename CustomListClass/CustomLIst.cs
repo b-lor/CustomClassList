@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,25 @@ using System.Threading.Tasks;
 
 namespace CustomListClass
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
-        T[] items = new T[1];
+        private T[] items;
 
         public int Count { get { return count; } }
-        public int Capacity { get { return capacity; } set { capacity = value; } }
-
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
+            }
+            set
+            {
+                if (value >= count)
+                    capacity = value;
+                else
+                    throw new Exception("Index out of Bound");
+            }
+        }
         private int count;
         private int capacity { get; set; }
 
@@ -32,66 +45,151 @@ namespace CustomListClass
             set { items[i] = value; }
         }
 
-        public CustomList()
+        public CustomList(int aSize = 0)
         {
             items = new T[0];
             count = 0;
+            capacity = aSize;
         }
 
         public void increaseList()
         {
-            if (count >= capacity)
+            if (capacity == 0)
             {
-                    capacity++;
+                capacity = 1;
             }
-            capacity = count;
+            capacity = 2 * capacity;
         }
 
         public void Add(T toAdd)
         {
-            T[] tempArray = new T[items.Length + 1];
-            count++;
-            increaseList();
-            for (int i = 0; i < items.Length; i++)
+            if (capacity == 0 || count >= capacity)
             {
-                tempArray[i] = items[i];
+                increaseList();
+                T[] tempArray = new T[capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    tempArray[i] = items[i];
+                }
+                items = tempArray;
             }
-            tempArray[tempArray.Length - 1] = toAdd;
-            items = tempArray;
+            items[count++] = toAdd;
         }
-
 
         public bool Remove(T toRemove)
         {
-            bool result = false;
             for (int i = 0; i < count; i++)
             {
-                if (items[i].Equals(toRemove))
+                if (Comparer<T>.Default.Compare(items[i], toRemove)==0)
                 {
-                    int removeIndex = i;
-                    for (int j = removeIndex; j < count - 1; j++)
+                    for (; i < count; i++)
                     {
-                        items[j] = items[j + 1];
+                        if (i < count - 1)
+                        {
+                            items[i] = items[i + 1];
+                        }
                     }
                     count--;
-                    capacity--;
-                    result = true;
+                    return true;
                 }
             }
-            return result;
+            return false;
         }
 
+        public bool RemoveAt(int index)
+        {
+            if (index >= count || index < 0)
+                return false;
+            else
+            {
+                for (int i = index; i < count; i++)
+                {
+                    if (i < count - 1)
+                        items[i] = items[i + 1];
+                }
+                count--;
+                return true;
+            }
+        }
 
         public override string ToString()
         {
             string isString = "";
-            isString = items[0].ToString();
-            for (int i = 1; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
-                isString = items[i].ToString();
+                if (isString == "")
+                    isString = "" + items[i];
+                {
+                    isString = isString + " " + items[i];
+                }
             }
             return isString;
         }
 
+        //public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
+        //{
+        //    CustomList<T> plusOperator = new CustomList<T>();
+        //    for (int i = 0; i < listOne.count; i++)
+        //    {
+        //        plusOperator.Add(listOne.items[i]);
+        //    }
+        //    for (int i = 0; i < listTwo.count; i++)
+        //    {
+        //        plusOperator.Add(listTwo.items[i]);
+        //    }
+        //    return plusOperator;
+        //}
+
+        public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> plusOperator = new CustomList<T>();
+            for (int i = 0; i < listOne.count; i++)
+            {
+                dynamic listOneList = listOne[i];
+                dynamic listTwoList = listTwo[i];
+                T temp = (T)(listOneList + listTwoList);
+                plusOperator.Add(temp);
+            }
+            return plusOperator;
+        }
+        public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> minusOperator = new CustomList<T>();
+            for (int i = 0; i < listOne.count; i++)
+            {
+                dynamic listOneList = listOne[i];
+                dynamic listTwoList = listTwo[i];
+                T temp = (T)(listOneList - listTwoList);
+                minusOperator.Add(temp);
+            }
+            return minusOperator;
+        }
+
+        public static CustomList<T> Zip(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> zipperList = new CustomList<T>(listOne.count + listTwo.count);
+            for (int i = 0; i < listOne.count; i++)
+            {
+                zipperList.Add(listOne[i]);
+            }
+            for (int i = 0; i < listTwo.count; i++)
+            {
+                zipperList.Add(listTwo[i]);
+            }
+            return zipperList;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
+        }
+          
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            yield return (IEnumerable)GetEnumerator();
+        }
     }
 }
