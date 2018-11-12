@@ -106,6 +106,27 @@ namespace CustomListClass_Tests
         }
 
         [TestMethod]
+        public void Check_If_Index_Sequence_is_Correct_After_Removing_2_Same_Values()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 10;
+
+            //Act
+            list.Add(17);
+            list.Add(18);
+            list.Add(16);
+            list.Add(18);
+            list.Add(10);
+            list.Add(16);
+            list.Add(18);
+            list.Add(10);
+            list.Remove(18);
+            list.Remove(18);
+
+            Assert.AreEqual(expected, list[2]);
+        }
+        [TestMethod]
         public void Check_Capacity_Of_List()
         {
             //Arrange
@@ -176,7 +197,24 @@ namespace CustomListClass_Tests
             //Assert
             Assert.AreEqual(expected, result);
         }
+        [TestMethod]
+        public void Check_If_ToString_Works_On_Entire_List()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            string expected = "16 17 18 19 20";
 
+            //Act
+            list.Add(16);
+            list.Add(17);
+            list.Add(18);
+            list.Add(19);
+            list.Add(20);
+            string actual = list.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
         [TestMethod]
         public void Checking_If_2_Int_Are_Added_With_Plus_Operator()
         {
@@ -190,6 +228,45 @@ namespace CustomListClass_Tests
             list1.Add(3);
 
             int result = list[0] + list1[0];
+
+            //Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Checking_If_Plus_Operator_Works_On_Int_From_3_Lists_Index_1()
+        {
+            //Arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list3 = new CustomList<int>();
+            int expected = 12;
+
+            //Act
+            list1.Add(1);
+            list1.Add(2);
+            list2.Add(3);
+            list2.Add(4);
+            list3.Add(5);
+            list3.Add(6);
+            CustomList<int> result = list1 + list2 + list3;
+
+            //Assert
+            Assert.AreEqual(expected, result[1]);
+        }
+        [TestMethod]
+        public void Checking_If_2_Int_Are_Subtracted_With_Minus_Operator()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>();
+            int expected = 2;
+
+            //Act
+            list.Add(5);
+            list1.Add(3);
+
+            int result = list[0] - list1[0];
 
             //Assert
             Assert.AreEqual(expected, result);

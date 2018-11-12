@@ -47,9 +47,16 @@ namespace CustomListClass
 
         public CustomList(int aSize = 0)
         {
-            items = new T[0];
-            count = 0;
-            capacity = aSize;
+            try
+            {
+                items = new T[0];
+                count = 0;
+                capacity = aSize;
+            }
+            catch
+            {
+                throw new Exception("Size entered is invalid");
+            }
         }
 
         public void increaseList()
@@ -118,7 +125,10 @@ namespace CustomListClass
             for (int i = 0; i < count; i++)
             {
                 if (isString == "")
+                {
                     isString = "" + items[i];
+                }
+                else
                 {
                     isString = isString + " " + items[i];
                 }
