@@ -59,6 +59,24 @@ namespace CustomListClass
             }
         }
 
+        public CustomList(T[] input)
+        {
+            count = input.Length;
+            try
+            {
+                capacity = count;
+                items = new T[capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    items[i] = input[i];
+                }
+            }
+            catch
+            {
+                throw new Exception("Invalid Input! Error");
+            }
+        }
+
         public void increaseList()
         {
             if (capacity == 0)
@@ -177,19 +195,25 @@ namespace CustomListClass
 
         public static CustomList<T> Zip(CustomList<T> listOne, CustomList<T> listTwo)
         {
-            CustomList<T> zipperList = new CustomList<T>(listOne.count + listTwo.count);
-            for (int i = 0; i < listOne.count; i++)
+            CustomList<T> zipperList = new CustomList<T>(listOne.Count + listTwo.Count);
+            int listOne_count = 0, listTwo_count = 0;
+            while (listOne_count < listOne.Count || listTwo_count < listTwo.Count)
             {
-                zipperList.Add(listOne[i]);
-            }
-            for (int i = 0; i < listTwo.count; i++)
-            {
-                zipperList.Add(listTwo[i]);
+                if (listOne_count < listOne.Count)
+                {
+                    zipperList.Add(listOne[listOne_count]);
+                    listOne_count++;
+                }
+                if (listTwo_count < listTwo.Count)
+                {
+                    zipperList.Add(listTwo[listTwo_count]);
+                    listTwo_count++;
+                }
             }
             return zipperList;
         }
 
-        public IEnumerator GetEnumerator()
+            public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < count; i++)
             {

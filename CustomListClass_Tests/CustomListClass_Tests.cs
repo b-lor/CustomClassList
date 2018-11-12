@@ -254,24 +254,49 @@ namespace CustomListClass_Tests
             //Assert
             Assert.AreEqual(expected, result[1]);
         }
+        //[TestMethod]
+        //public void Checking_If_2_Int_Are_Subtracted_With_Minus_Operator()
+        //{
+        //    //Arrange
+        //    CustomList<int> list1 = new CustomList<int>();
+        //    CustomList<int> list2 = new CustomList<int>();
+        //    int expected = 2;
+
+        //    //Act
+        //    list1.Add(1);
+        //    list1.Add(2);
+        //    list1.Add(3);
+        //    list2.Add(3);
+        //    list2.Add(4);
+        //    list2.Add(4);
+
+        //    int result = list1[0] - list2[0];
+
+        //    //Assert
+        //    Assert.AreEqual(expected, result);
+        //}
+
         [TestMethod]
-        public void Checking_If_2_Int_Are_Subtracted_With_Minus_Operator()
+        public void Checking_If_Lists_Got_Zipped_Together_orig()
         {
             //Arrange
-            CustomList<int> list = new CustomList<int>();
             CustomList<int> list1 = new CustomList<int>();
-            int expected = 2;
+            CustomList<int> list2 = new CustomList<int>();
+            CustomList<int> list3 = new CustomList<int>();
+            int expected = 000;
 
             //Act
-            list.Add(5);
+            list1.Add(1);
             list1.Add(3);
+            list1.Add(5);
+            list2.Add(2);
+            list2.Add(4);
+            list2.Add(6);
 
-            int result = list[0] - list1[0];
 
             //Assert
+            Assert.AreEqual(expected[0], result[0]);
             Assert.AreEqual(expected, result);
         }
-
-
     }
 }
