@@ -33,16 +33,36 @@ namespace CustomListClass
                 if (value >= count)
                     capacity = value;
                 else
-                    throw new Exception("Index out of Bound");
+                    throw new ArgumentOutOfRangeException();
             }
         }
         private int count;
         private int capacity { get; set; }
 
+        //public T this[int i]
+        //{
+        //    get { return items[i]; }
+        //    set { items[i] = value; }
+        //}
+
         public T this[int i]
         {
-            get { return items[i]; }
-            set { items[i] = value; }
+            get
+            {
+                if (i >= count || i < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                return items[i];
+            }
+            set
+            {
+                if (i >= count || i < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                items[i] = value;
+            }
         }
 
         public CustomList(int aSize = 0)
@@ -55,7 +75,7 @@ namespace CustomListClass
             }
             catch
             {
-                throw new Exception("Size entered is invalid");
+                throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -73,7 +93,7 @@ namespace CustomListClass
             }
             catch
             {
-                throw new Exception("Invalid Input! Error");
+                throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -154,60 +174,62 @@ namespace CustomListClass
             return isString;
         }
 
-        //public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
-        //{
-        //    CustomList<T> plusOperator = new CustomList<T>();
-        //    for (int i = 0; i < listOne.count; i++)
-        //    {
-        //        plusOperator.Add(listOne.items[i]);
-        //    }
-        //    for (int i = 0; i < listTwo.count; i++)
-        //    {
-        //        plusOperator.Add(listTwo.items[i]);
-        //    }
-        //    return plusOperator;
-        //}
 
         public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> plusOperator = new CustomList<T>();
-            for (int i = 0; i < listOne.count; i++)
+            foreach (T item in listOne)
             {
-                dynamic listOneList = listOne[i];
-                dynamic listTwoList = listTwo[i];
-                T temp = (T)(listOneList + listTwoList);
-                plusOperator.Add(temp);
+                plusOperator.Add(item);
+            }
+            foreach (T item in listTwo)
+            {
+                plusOperator.Add(item);
             }
             return plusOperator;
         }
+
         public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> minusOperator = new CustomList<T>();
-            for (int i = 0; i < listOne.count; i++)
+            foreach (T item in listTwo)
             {
-                dynamic listOneList = listOne[i];
-                dynamic listTwoList = listTwo[i];
-                T temp = (T)(listOneList - listTwoList);
-                minusOperator.Add(temp);
+                foreach (T items in listOne)
+                {
+                    if (object.Equals(item, items))
+                    {
+                        listOne.Remove(item);
+                    }
+                }
             }
-            return minusOperator;
+            return listOne;
         }
 
         public static CustomList<T> Zip(CustomList<T> listOne, CustomList<T> listTwo)
         {
-            CustomList<T> zipperList = new CustomList<T>(listOne.Count + listTwo.Count);
-            int listOne_count = 0, listTwo_count = 0;
-            while (listOne_count < listOne.Count || listTwo_count < listTwo.Count)
+            CustomList<T> zipperList = new CustomList<T>();
+            int zip = listOne.Count;
+            if (listOne.Count < listTwo.Count)
             {
-                if (listOne_count < listOne.Count)
+                zip = listTwo.Count;
+            }
+            for (int i = 0; i < zip; i++)
+            {
+                try
                 {
-                    zipperList.Add(listOne[listOne_count]);
-                    listOne_count++;
+                    zipperList.Add(listOne[i]);
                 }
-                if (listTwo_count < listTwo.Count)
+                catch (ArgumentOutOfRangeException)
                 {
-                    zipperList.Add(listTwo[listTwo_count]);
-                    listTwo_count++;
+
+                }
+                try
+                {
+                    zipperList.Add(listTwo[i]);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+
                 }
             }
             return zipperList;

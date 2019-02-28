@@ -1,0 +1,7 @@
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\b\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\b\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\b\CustomListClass_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\b\CustomListClass_Tests\bin\Debug\CustomListClass_Tests.dll
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\i\CustomListClass_Tests\Debug\CustomListClass_Tests.csproj.CoreCompileInputs.cache
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\i\CustomListClass_Tests\Debug\CustomListClass_Tests.csproj.CopyComplete
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\i\CustomListClass_Tests\Debug\CustomListClass_Tests.dll

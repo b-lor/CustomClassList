@@ -13,6 +13,17 @@ namespace CustomListClass_Tests
     public class CustomListClass_Tests
     {
         [TestMethod]
+        public void Check_If_Index_0_Equals_1()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 1;
+            //Act
+            list.Add(1);
+
+            Assert.AreEqual(expected, list[0]);
+        }
+        [TestMethod]
         public void Check_If_Count_Equals_To_9()
         {
             //Arrange
@@ -69,6 +80,19 @@ namespace CustomListClass_Tests
         }
 
         [TestMethod]
+        public void Check_If_List_Is_Empty_After_Add_Remove()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int count = 0;
+            //Act
+            list.Add(18);
+            list.Remove(18);
+
+            Assert.AreEqual(count, list.Count);
+        }
+
+        [TestMethod]
         public void Check_If_Count_Changes_After_Removing_Value()
         {
             //Arrange
@@ -80,6 +104,55 @@ namespace CustomListClass_Tests
             list.Add(16);
             list.Add(19);
             list.Remove(18);
+
+            Assert.AreEqual(count, list.Count);
+        }
+
+        [TestMethod]
+        public void Check_If_3_Can_Be_Removed_From_List_Is_True()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+
+            //Act
+            bool expected = list.Remove(3);
+
+            Assert.IsTrue(expected);
+        }
+
+        [TestMethod]
+        public void Check_If_6_Can_Be_Removed_From_List_Is_False()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+
+            //Act
+            bool expected = list.Remove(6);
+
+            Assert.IsFalse(expected);
+        }
+
+        [TestMethod]
+        public void Check_If_Count_Is_50()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int count = 50;
+            //Act
+            for (int i = 0; i < 50; i++)
+            {
+                list.Add(i);
+            }
 
             Assert.AreEqual(count, list.Count);
         }
@@ -234,13 +307,13 @@ namespace CustomListClass_Tests
         }
 
         [TestMethod]
-        public void Checking_If_Plus_Operator_Works_On_Int_From_3_Lists_Index_1()
+        public void Checking_If_Plus_Operator_Index_3_Is_Correct_After_Adding_3_Lists()
         {
             //Arrange
             CustomList<int> list1 = new CustomList<int>();
             CustomList<int> list2 = new CustomList<int>();
             CustomList<int> list3 = new CustomList<int>();
-            int expected = 12;
+            int expected = 4;
 
             //Act
             list1.Add(1);
@@ -252,37 +325,140 @@ namespace CustomListClass_Tests
             CustomList<int> result = list1 + list2 + list3;
 
             //Assert
-            Assert.AreEqual(expected, result[1]);
+            Assert.AreEqual(expected, result[3]);
         }
-        //[TestMethod]
-        //public void Checking_If_2_Int_Are_Subtracted_With_Minus_Operator()
-        //{
-        //    //Arrange
-        //    CustomList<int> list1 = new CustomList<int>();
-        //    CustomList<int> list2 = new CustomList<int>();
-        //    int expected = 2;
-
-        //    //Act
-        //    list1.Add(1);
-        //    list1.Add(2);
-        //    list1.Add(3);
-        //    list2.Add(3);
-        //    list2.Add(4);
-        //    list2.Add(4);
-
-        //    int result = list1[0] - list2[0];
-
-        //    //Assert
-        //    Assert.AreEqual(expected, result);
-        //}
 
         [TestMethod]
-        public void Checking_If_Lists_Got_Zipped_Together_orig()
+        public void Checking_If_Plus_Operator_New_Index_6_Is_Correct_After_Adding_2_Lists()
         {
             //Arrange
             CustomList<int> list1 = new CustomList<int>();
             CustomList<int> list2 = new CustomList<int>();
-            CustomList<int> list3 = new CustomList<int>();
+
+            int expected = 6;
+
+            //Act
+            list1.Add(1);
+            list1.Add(2);
+            list2.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            CustomList<int> result = list1 + list2;
+
+            //Assert
+            Assert.AreEqual(expected, result[5]);
+        }
+
+        [TestMethod]
+        public void Checking_If_Plus_Operator_Adds_Strings()
+        {
+            //Arrange
+            CustomList<string> list1 = new CustomList<string>();
+            CustomList<string> list2 = new CustomList<string>();
+
+            string expected = "bye";
+
+            //Act
+            list1.Add("hello");
+            list1.Add("kitty");
+            list2.Add("blue");
+            list2.Add("sky");
+
+            CustomList<string> res = list1 + list2;
+            string result = res.ToString();
+            //Assert
+            Assert.AreEqual(result, "hello kitty blue sky");
+        }
+
+        [TestMethod]
+        public void Checking_If_Minus_Operator_Correctly_Removes_Matching_Int_Leaving_The_Others()
+        {
+            //Arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            //int expected = 2;
+
+            //Act
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list1.Add(4);
+            list1.Add(5);
+            list1.Add(6);
+            list1.Add(7);
+            list1.Add(8);
+            list1.Add(9);
+            list1.Add(10);
+            list2.Add(2);
+            list2.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+
+            CustomList<int> res = list1 - list2;
+            string result = res.ToString();
+
+            //Assert
+            Assert.AreEqual(result, "1 7 8 9 10");
+        }
+
+        [TestMethod]
+        public void Checking_If_Minus_Operator_Correctly_Removes_Duplicate_Matching_Int_Leaving_The_Others()
+        {
+            //Arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            //int expected = 2;
+
+            //Act
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+            list1.Add(4);
+            list1.Add(1);
+            list2.Add(1);
+
+            CustomList<int> res = list1 - list2;
+            string result = res.ToString();
+
+            //Assert
+            Assert.AreEqual(result, "2 3 4");
+        }
+
+        [TestMethod]
+        public void Checking_If_Minus_Operator_Correctly_Removes_Matching_String_Leaving_The_Others()
+        {
+            //Arrange
+            CustomList<string> list1 = new CustomList<string>();
+            CustomList<string> list2 = new CustomList<string>();
+            //int expected = 2;
+
+            //Act
+            list1.Add("one");
+            list1.Add("two");
+            list1.Add("three");
+            list1.Add("four");
+            list1.Add("five");
+            list2.Add("one");
+            list2.Add("three");
+
+            CustomList<string> res = list1 - list2;
+            string result = res.ToString();
+
+            //Assert
+            Assert.AreEqual(result, "two four five");
+            //Assert.AreEqual(result, "1, 7, 8, 9, 10");
+
+        }
+
+
+        [TestMethod]
+        public void Checking_If_Two_Equal_Lists_Are_Zipped_In_Order()
+        {
+            //Arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
             int expected = 000;
 
             //Act
@@ -293,10 +469,112 @@ namespace CustomListClass_Tests
             list2.Add(4);
             list2.Add(6);
 
+            CustomList<int> res = CustomList<int>.Zip(list1, list2);
+            string result = res.ToString();
 
             //Assert
-            Assert.AreEqual(expected[0], result[0]);
+            //Assert.AreEqual(expected[0], result[0]);
+            Assert.AreEqual(result, "1 2 3 4 5 6");
+        }
+
+        [TestMethod]
+        public void Checking_If_Two_Different_Lists_Are_Zipped_In_Order()
+        {
+            //Arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int expected = 000;
+
+            //Act
+            list1.Add(1);
+            list1.Add(3);
+            list1.Add(5);
+            list1.Add(7);
+            list1.Add(8);
+            list2.Add(2);
+            list2.Add(4);
+            list2.Add(6);
+
+            CustomList<int> res = CustomList<int>.Zip(list1, list2);
+            string result = res.ToString();
+
+            //Assert
+            //Assert.AreEqual(expected[0], result[0]);
+            Assert.AreEqual(result, "1 2 3 4 5 6 7 8");
+        }
+        [TestMethod]
+        public void Checking_If_GetEnumerator_List_Is_Empty()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 0;
+            int result = 0;
+
+            //Act
+            foreach (int item in list)
+            {
+                result += item;
+            }
+
+            //Assert
             Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Checking_If_GetEnumerator_List_Is_Equal_To_3()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 3;
+            int result = 0;
+
+            list.Add(1);
+            list.Add(1);
+            list.Add(1);
+
+            //Act
+            foreach (int item in list)
+            {
+                result += item;
+            }
+
+            //Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Check_If_Index_0_Returns_ArgumentOutOfRangeException()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+
+            //Act
+            int lists = list[0];
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Check_If_Negative_Index_Returns_ArgumentOutOfRangeException()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+
+            //Act
+            int lists = list[-5];
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Check_If_Positive_Index_Returns_ArgumentOutOfRangeException()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+
+            list.Add(1);
+
+            //Act
+            int lists = list[1];
         }
     }
 }

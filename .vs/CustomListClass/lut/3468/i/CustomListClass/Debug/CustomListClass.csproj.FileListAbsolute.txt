@@ -1,0 +1,6 @@
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\b\CustomListClass\bin\Debug\CustomListClass.exe.config
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\b\CustomListClass\bin\Debug\CustomListClass.exe
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\i\CustomListClass\Debug\CustomListClass.csprojAssemblyReference.cache
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\i\CustomListClass\Debug\CustomListClass.csproj.CoreCompileInputs.cache
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\i\CustomListClass\Debug\CustomListClass.csproj.CopyComplete
+D:\Dropbox\Git2\CustomClassList\.vs\CustomListClass\lut\0\i\CustomListClass\Debug\CustomListClass.exe

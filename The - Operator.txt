@@ -2,11 +2,21 @@ The - operator subtracts one instance of a custom list class from another instan
 
 
 Syntax
-	public static CustomList<T> operator -(
-
-	CustomList<T> listOne
-	CustomList<T> listTwo
-	)
+        public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> minusOperator = new CustomList<T>();
+            foreach (T item in listTwo)
+            {
+                foreach (T items in listOne)
+                {
+                    if (object.Equals(item, items))
+                    {
+                        listOne.Remove(item);
+                    }
+                }
+            }
+            return listOne;
+        }
       
 
 Parameters
@@ -23,18 +33,6 @@ Return Value
 
 Example
 
-Substract second instance of the custom list from first instance
-	        public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
-        {
-            CustomList<T> minusOperator = new CustomList<T>();
-            for (int i = 0; i < listOne.count; i++)
-            {
-                dynamic listOneList = listOne[i];
-                dynamic listTwoList = listTwo[i];
-                T temp = (T)(listOneList - listTwoList);
-                minusOperator.Add(temp);
-            }
-            return minusOperator;
-        }
+listOne has 1, 2, 3, 4, 5 and listTwo has 2, 4.
 
-	
+The result of listOne - listTwo = 1, 3, 5.  

@@ -5,3 +5,10 @@ C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\bin\Debug\CustomListC
 C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\bin\Debug\CustomListClass.pdb
 C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\obj\Debug\CustomListClass.exe
 C:\Users\blorw\Dropbox\Git\CustomListClass\CustomListClass\obj\Debug\CustomListClass.pdb
+D:\Dropbox\Git2\CustomClassList\CustomListClass\bin\Debug\CustomListClass.exe.config
+D:\Dropbox\Git2\CustomClassList\CustomListClass\bin\Debug\CustomListClass.exe
+D:\Dropbox\Git2\CustomClassList\CustomListClass\bin\Debug\CustomListClass.pdb
+D:\Dropbox\Git2\CustomClassList\CustomListClass\obj\Debug\CustomListClass.csprojAssemblyReference.cache
+D:\Dropbox\Git2\CustomClassList\CustomListClass\obj\Debug\CustomListClass.csproj.CoreCompileInputs.cache
+D:\Dropbox\Git2\CustomClassList\CustomListClass\obj\Debug\CustomListClass.exe
+D:\Dropbox\Git2\CustomClassList\CustomListClass\obj\Debug\CustomListClass.pdb
